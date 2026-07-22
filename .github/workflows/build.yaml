@@ -100,6 +100,6 @@ jobs:
       - name: Build provenance attestation
         uses: actions/attest-build-provenance@v2
         with:
-          subject: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subject-digest: ${{ steps.push-image.outputs.digest }}
           push-to-registry: true
