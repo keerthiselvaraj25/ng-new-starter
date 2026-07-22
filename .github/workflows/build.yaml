@@ -51,18 +51,19 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: npm-package
+          path: dist/*.tgz
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
+          path: dist/
 
       - name: Attest npm package
-        if: github.event_name !='pull_request'
+        if: github.event_name != 'pull_request'
         uses: actions/attest-build-provenance@v2
         with:
-          subject: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          subject-digest: ${{ steps.push-image.outputs.digest }}
+          subject-path: dist/*.tgz
           push-to-registry: true
 
   docker:
