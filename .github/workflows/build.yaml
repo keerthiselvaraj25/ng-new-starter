@@ -81,7 +81,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Build provenance attestation
-        uses: actions/attest-build-provance@v2
+        uses: actions/attest-build-provenance@v2
         with:
           subject: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subject-digest: ${{ steps.push-image.outputs.digest }}
